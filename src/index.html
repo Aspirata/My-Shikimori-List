@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Shikimori List</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <canvas id="pixelNoise"></canvas>
+
+  <header class="l-top-bar">
+    <a class="logo" href="#" onclick="goHome(); return false;">
+      <svg class="logo-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      My Shikimori List
+    </a>
+    <a class="about-link" href="about.html">О сайте</a>
+    <div class="header-search" id="headerSearch" style="display:none">
+      <input type="text" id="nickInputHeader" placeholder="Другой никнейм…"/>
+      <button onclick="loadFromHeader()">Загрузить</button>
+    </div>
+  </header>
+
+  <main id="landing" class="landing">
+    <div class="landing-inner">
+      <div class="landing-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <h1>My Shikimori List</h1>
+      <p>Введите никнейм пользователя, чтобы получить его список аниме в текстовом формате</p>
+      <div class="landing-search">
+        <input type="text" id="nickInput" placeholder="Никнейм на Shikimori…" autofocus/>
+        <button onclick="loadUser()">Загрузить</button>
+      </div>
+    </div>
+  </main>
+
+  <main id="resultsPage" style="display:none">
+    <div class="results-wrap">
+
+      <div class="user-card-inner">
+        <img id="userAvatar" src="" alt=""/>
+        <div class="user-info">
+          <strong id="userName"></strong>
+          <a id="userProfileLink" href="#" target="_blank">Открыть профиль ↗</a>
+        </div>
+      </div>
+
+      <nav class="status-nav" id="statusNav"></nav>
+
+      <div class="list-options">
+        <label>Формат:
+          <select id="fmtSelect" onchange="renderOutput()">
+            <option value="short">Краткий</option>
+            <option value="normal">Обычный</option>
+            <option value="full">Подробный</option>
+          </select>
+        </label>
+        <label>Сортировка:
+          <select id="sortSelect" onchange="renderOutput()">
+            <option value="name" selected>По алфавиту</option>
+            <option value="score_desc">Оценка по убыванию</option>
+            <option value="score_asc">Оценка по возрастанию</option>
+          </select>
+        </label>
+        <button class="btn-copy" onclick="copyOutput()">Копировать</button>
+      </div>
+
+      <textarea id="output" readonly></textarea>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
