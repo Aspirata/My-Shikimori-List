@@ -1,4 +1,4 @@
-# [My Shikimori List](https://aspirata.github.io/My-Shikimori-List)
+# [My Shikimori List](https://aspirata.github.io/My-Shikimori-List/)
 
 [![License](https://img.shields.io/badge/License-MIT-orange.svg)](./LICENSE)
 
