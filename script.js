@@ -127,7 +127,7 @@ async function loadUser() {
 
   try {
     const userRes = await fetch(
-      `https://shikimori.one/api/users/${encodeURIComponent(nick)}`,
+      `https://shikimori.io/api/users/${encodeURIComponent(nick)}`,
       { headers: { 'User-Agent': 'ShikimoriListExport/1.0' } }
     );
     if (!userRes.ok) throw new Error(userRes.status === 404
@@ -138,7 +138,7 @@ async function loadUser() {
 
     const avatarEl = document.getElementById('userAvatar');
     const avatarUrl = user.avatar
-      ? (user.avatar.startsWith('http') ? user.avatar : 'https://shikimori.one' + user.avatar)
+      ? (user.avatar.startsWith('http') ? user.avatar : 'https://shikimori.io' + user.avatar)
       : '';
     avatarEl.style.display = '';
     avatarEl.src = avatarUrl;
@@ -146,12 +146,12 @@ async function loadUser() {
     avatarEl.onload  = () => { avatarEl.style.display = ''; };
 
     document.getElementById('userName').textContent = user.nickname;
-    document.getElementById('userProfileLink').href = `https://shikimori.one/${encodeURIComponent(user.nickname)}`;
+    document.getElementById('userProfileLink').href = `https://shikimori.io/${encodeURIComponent(user.nickname)}`;
 
     let page = 1;
     while (true) {
       const r = await fetch(
-        `https://shikimori.one/api/users/${user.id}/anime_rates?limit=1000&page=${page}`,
+        `https://shikimori.io/api/users/${user.id}/anime_rates?limit=1000&page=${page}`,
         { headers: { 'User-Agent': 'ShikimoriListExport/1.0' } }
       );
       if (!r.ok) throw new Error(`Ошибка HTTP ${r.status}`);
@@ -320,7 +320,7 @@ function formatFull(rate, index) {
     `   ${extrasStr}`,
   ];
 
-  lines.push(`   Ссылка: https://shikimori.one${anime.url}`, '');
+  lines.push(`   Ссылка: https://shikimori.io${anime.url}`, '');
   return lines.join('\n');
 }
 
